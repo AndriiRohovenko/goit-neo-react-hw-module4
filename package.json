@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "formik": "^2.4.6",
     "modern-normalize": "^3.0.1",
     "nanoid": "^5.1.5",
     "react": "^19.0.0",
