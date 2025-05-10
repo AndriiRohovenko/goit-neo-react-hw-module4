@@ -1,8 +1,8 @@
 import styles from './App.module.css';
 
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 function App() {
   return (
