@@ -10,9 +10,9 @@ function SearchBar({ onSearch }) {
   return (
     <>
       <header>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.searchForm}>
           <input
-            className="searchBar"
+            className={styles.searchBar}
             name="searchBarInput"
             type="text"
             autoComplete="off"

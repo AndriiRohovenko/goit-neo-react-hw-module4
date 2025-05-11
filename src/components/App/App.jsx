@@ -8,10 +8,11 @@ import { getPhotos } from '../../api/getPhotos';
 import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
+import Loader from '../Loader/Loader';
 
 function App() {
   const [hits, setHits] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   // const [error, setError] = useState(false)
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
@@ -21,9 +22,9 @@ function App() {
 
     const fetching = async () => {
       try {
-        // setIsLoading(true)
+        setIsLoading(true);
         // setError(false)
-        // setHits([])
+        // setHits([]);
 
         const data = await getPhotos(searchQuery, page);
 
@@ -34,7 +35,7 @@ function App() {
         console.error(error);
         // setError(true)
       } finally {
-        // setIsLoading(false)
+        setIsLoading(false);
       }
     };
     fetching();
@@ -54,7 +55,7 @@ function App() {
       <div className={styles.appContent}>
         <SearchBar onSearch={handleSearch} />
         <ImageGallery data={hits} />
-
+        <Loader isLoading={isLoading} />
         {hits.length > 0 && <LoadMoreBtn handler={handleLoadMore} />}
       </div>
     </>
