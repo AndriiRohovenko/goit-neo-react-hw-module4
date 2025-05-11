@@ -1,0 +1,11 @@
+.PhotosGalleryWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  width: 1128px;
+  margin: 24px auto;
+  padding: 0px;
+  gap: 24px;
+}

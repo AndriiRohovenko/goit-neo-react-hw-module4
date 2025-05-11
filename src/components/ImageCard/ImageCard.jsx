@@ -3,7 +3,7 @@ import styles from './ImageCard.module.css';
 function ImageCard({ url, altText }) {
   return (
     <>
-      <div>
+      <div className={styles.imageCardWrapper}>
         <img src={url} alt={altText} />
       </div>
     </>

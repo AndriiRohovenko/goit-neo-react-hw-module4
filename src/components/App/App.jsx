@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { getPhotos } from '../../api/getPhotos';
 import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 
 function App() {
   const [hits, setHits] = useState([]);
@@ -44,11 +45,17 @@ function App() {
     setPage(1);
   };
 
+  const handleLoadMore = async () => {
+    setPage(page + 1);
+  };
+
   return (
     <>
       <div className={styles.appContent}>
         <SearchBar onSearch={handleSearch} />
         <ImageGallery data={hits} />
+
+        {hits.length > 0 && <LoadMoreBtn handler={handleLoadMore} />}
       </div>
     </>
   );
