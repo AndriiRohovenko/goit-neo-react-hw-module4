@@ -2,6 +2,7 @@ import styles from './SearchBar.module.css';
 import { useId } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { toast } from 'react-hot-toast';
+import { GoSearch } from 'react-icons/go';
 
 function SearchBar({ onSearch }) {
   const searchFieldID = useId();
@@ -26,7 +27,9 @@ function SearchBar({ onSearch }) {
             placeholder="Search images and photos"
             id={searchFieldID}
           />
-          <button type="submit">Search</button>
+          <button type="submit" className={styles.searchBtn}>
+            <GoSearch />
+          </button>
           <Toaster position="top-right" />
         </form>
       </header>

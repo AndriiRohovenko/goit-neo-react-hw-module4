@@ -1,10 +1,12 @@
-// import styles from './LoadMoreBtn.module.css';
+import styles from './LoadMoreBtn.module.css';
 
 function LoadMoreBtn({ handler }) {
   return (
     <>
-      <div>
-        <button onClick={handler}>Load More</button>
+      <div className={styles.loadMoreWrapper}>
+        <button onClick={handler} className={styles.loadMoreBtn}>
+          Load More
+        </button>
       </div>
     </>
   );

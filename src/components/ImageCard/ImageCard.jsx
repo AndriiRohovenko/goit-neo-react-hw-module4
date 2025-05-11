@@ -1,10 +1,14 @@
 import styles from './ImageCard.module.css';
 
-function ImageCard({ url, altText }) {
+function ImageCard({ smallImgUrl, regularImgUrl, altText, onImageClick }) {
   return (
     <>
       <div className={styles.imageCardWrapper}>
-        <img src={url} alt={altText} />
+        <img
+          src={smallImgUrl}
+          alt={altText}
+          onClick={() => onImageClick(regularImgUrl)}
+        />
       </div>
     </>
   );
