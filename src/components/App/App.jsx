@@ -2,8 +2,6 @@ import styles from './App.module.css';
 
 import { useState, useEffect } from 'react';
 
-// import { nanoid } from 'nanoid';
-
 import { getPhotos } from '../../api/getPhotos';
 import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';

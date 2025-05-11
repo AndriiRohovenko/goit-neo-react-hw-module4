@@ -7,10 +7,10 @@
   transform: translate(-50%, -50%);
   padding: 20px;
   border-radius: 10px;
-  max-width: 500px;
-  max-height: 700px;
+  max-height: 800px;
   position: fixed;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: auto;
+  background-color: gray;
 }
