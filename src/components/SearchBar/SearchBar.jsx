@@ -1,11 +1,16 @@
 import styles from './SearchBar.module.css';
 import { useId } from 'react';
+import { toast } from 'react-hot-toast';
 
 function SearchBar({ onSearch }) {
   const searchFieldID = useId();
   const handleSubmit = ev => {
     ev.preventDefault();
-    onSearch(ev.target.elements.searchBarInput.value);
+    const input_value = ev.target.elements.searchBarInput.value;
+    if (!input_value) {
+      toast.error('Please insert search text!');
+    }
+    onSearch(input_value);
   };
   return (
     <>
