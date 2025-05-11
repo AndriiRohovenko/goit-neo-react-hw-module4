@@ -9,6 +9,8 @@ import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { toast } from 'react-hot-toast';
 
 function App() {
   const [hits, setHits] = useState([]);
@@ -42,6 +44,9 @@ function App() {
   }, [page, searchQuery]);
 
   const handleSearch = searchValue => {
+    if (!searchQuery) {
+      toast.error('Please insert search text!');
+    }
     setSearchQuery(searchValue);
     setPage(1);
   };
@@ -54,6 +59,7 @@ function App() {
     <>
       <div className={styles.appContent}>
         <SearchBar onSearch={handleSearch} />
+        <ErrorMessage />
         <ImageGallery data={hits} />
         <Loader isLoading={isLoading} />
         {hits.length > 0 && <LoadMoreBtn handler={handleLoadMore} />}

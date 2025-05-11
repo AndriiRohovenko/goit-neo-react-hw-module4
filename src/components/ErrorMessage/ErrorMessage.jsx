@@ -1,7 +1,12 @@
-import styles from './ErrorMessage.module.css';
+// import styles from './ErrorMessage.module.css';
+import { Toaster } from 'react-hot-toast';
 
 function ErrorMessage() {
-  return <></>;
+  return (
+    <>
+      <Toaster position="top-right" />
+    </>
+  );
 }
 
 export default ErrorMessage;
