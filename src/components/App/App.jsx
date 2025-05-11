@@ -14,9 +14,10 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 function App() {
   const [hits, setHits] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
     if (!searchQuery) return;
@@ -24,17 +25,21 @@ function App() {
     const fetching = async () => {
       try {
         setIsLoading(true);
-        // setError(false)
-        // setHits([]);
 
         const data = await getPhotos(searchQuery, page);
+        if (data.results.length === 0) {
+          setHasMore(false);
+          if (page === 1) setError(true);
+        } else {
+          setHasMore(true);
+          setError(false);
+        }
 
         setHits(prev =>
           page === 1 ? data.results : [...prev, ...data.results]
         );
       } catch (error) {
         console.error(error);
-        // setError(true)
       } finally {
         setIsLoading(false);
       }
@@ -55,10 +60,10 @@ function App() {
     <>
       <div className={styles.appContent}>
         <SearchBar onSearch={handleSearch} />
-        <ErrorMessage />
+        {error == true && <ErrorMessage />}
         <ImageGallery data={hits.length > 0 ? hits : []} />
         <Loader isLoading={isLoading} />
-        {hits.length > 0 && <LoadMoreBtn handler={handleLoadMore} />}
+        {hasMore && <LoadMoreBtn handler={handleLoadMore} />}
       </div>
     </>
   );

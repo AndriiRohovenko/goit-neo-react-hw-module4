@@ -1,5 +1,6 @@
 import styles from './SearchBar.module.css';
 import { useId } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { toast } from 'react-hot-toast';
 
 function SearchBar({ onSearch }) {
@@ -26,6 +27,7 @@ function SearchBar({ onSearch }) {
             id={searchFieldID}
           />
           <button type="submit">Search</button>
+          <Toaster position="top-right" />
         </form>
       </header>
     </>
